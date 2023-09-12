@@ -20,7 +20,6 @@ export const Description = () => {
         
         更新
       </button>
-      <DogListContainer />
     </div>
 
   )

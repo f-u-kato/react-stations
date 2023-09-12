@@ -4,10 +4,11 @@ import { useState, useEffect } from 'react';
 import BreedsSelect from './BreedsSelect';
 
 export const DogListContainer = () => {
-  const [breeds,setBreeds]=useState()
-  const [selectedBreed,setSelectedBreed]=useState()
+  const [breeds,setBreeds]=useState({})
+  const [selectedBreed,setSelectedBreed]=useState('')
   const handleSelectChange = (e)=>{
     setSelectedBreed(e.target.value)
+    console.log(selectedBreed)
   }
   useEffect(()=>{
     fetch("https://dog.ceo/api/breeds/list/all")
@@ -16,7 +17,7 @@ export const DogListContainer = () => {
       (result) => {
         setBreeds(result.message)
       }) 
-  })
+  },[])
   return <BreedsSelect breeds={breeds} selectedBreed={selectedBreed} onChange={handleSelectChange}/>
   
 }
